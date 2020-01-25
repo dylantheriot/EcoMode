@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Dimensions, Text, View, TouchableOpacity, Image } from 'react-native';
+import { useGlobal } from 'reactn';
 import { Camera } from 'expo-camera'; 
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
   const [hasCamPerm, setHasCamPerm] = useState(false);
   const [camType, setCamType] = useState(Camera.Constants.Type.back);
   const camera = useRef<Camera>(null);
+  const [imgURI, setImgURI] = useGlobal('imgURI');
 
   useEffect(() => {
     (async() => {
@@ -43,7 +45,10 @@ const HomeScreen = () => {
       }}
       onPress={() => {
         console.log('Button has been pressed');
-        camera.current.takePictureAsync().then(img => console.log(img.uri));
+        camera.current.takePictureAsync().then(img => {
+          setImgURI(img.uri);
+          props.navigation.navigate('Objects');
+        });
       }}>
         <Image source={require('../assets/icon64.png')}/>
       </TouchableOpacity>
