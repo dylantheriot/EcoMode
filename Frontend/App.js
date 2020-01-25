@@ -1,19 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import HomeScreen from './src/HomeScreen';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Welcome to EcoMode</Text>
-    </View>
-  );
-}
+const AppContainer = createAppContainer(
+  createStackNavigator(
+    {
+      Home: HomeScreen,
+    },
+    {
+      initialRouteName: 'Home',
+      defaultNavigationOptions: {
+        headerShown: false,
+      }
+    })
+);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => <AppContainer />;
+
+export default App; 
