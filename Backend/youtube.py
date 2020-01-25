@@ -12,12 +12,13 @@ def getYtInfo(itemDetected):
     soup = bs(page, 'html.parser')
 
     videos = soup.findAll('a', class_ = "yt-uix-tile-link")
-
     for v in videos:
         href = v.get("href")
+        thumb = href[9:]
         title = v.get("title")
         link = "https://www.youtube.com" + href
+        thumbnail = "https://i.ytimg.com/vi/"+ thumb + "/0.jpg"
         print(title)
         print(link)
-
+        print(thumbnail)
 getYtInfo("Can")
