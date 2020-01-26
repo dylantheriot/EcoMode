@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Image, Dimensions, TouchableOpacity, Linking } from 'react-native';
+import { Text, View, StyleSheet, Image, Dimensions, TouchableOpacity, Linking, ScrollView } from 'react-native';
 import { useGlobal } from 'reactn';
 import Carousel from 'react-native-snap-carousel';
 import GivingDirections from './GivingDirections';
@@ -37,7 +37,7 @@ const Content = () => {
   }, []);
 
   return (
-  <View style={{
+  <ScrollView style={{
     backgroundColor: '#15453d',
     flexGrow: 1,
   }}>
@@ -70,12 +70,12 @@ const Content = () => {
     <Text style={styles.videoTitle}>{ptFocusedTitle}</Text>
     <Text style={styles.heading}>Recycle It!</Text>
     <GivingDirections />
-  </View>
+  </ScrollView>
 )};
 
 var styles = StyleSheet.create({
   heading: {
-    color: 'white',
+    color: '#43c59d',
     fontSize: 30,
     fontWeight: 'bold',
   },
