@@ -41,7 +41,7 @@ def identify():
     api_key = os.getenv('AZURE_CV_KEY')
     endpoint = 'https://ecomode.cognitiveservices.azure.com/vision/v2.1/analyze'
 
-    img_bytes = bytes(request.data)
+    img_bytes = bytes(base64.b64decode(request.data))
     headers = {
         'Ocp-Apim-Subscription-Key': api_key,
         'Content-Type': 'application/octet-stream'
