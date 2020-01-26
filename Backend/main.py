@@ -1,7 +1,8 @@
 from flask import Flask
 from flask import jsonify
+from bs4 import BeautifulSoup as bs
 # from pinterest import getPinterestInfo
-from youtube import getYtInfo
+# from youtube import getYtInfo
 # from location import getLocInfo
 from flask import request
 
