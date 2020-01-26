@@ -2,6 +2,7 @@ from flask import Flask
 from flask import jsonify
 from pinterest import getPinterestInfo
 from youtube import getYtInfo
+from location import getLocInfo
 from flask import request
 import os
 import errors
@@ -25,6 +26,12 @@ def youtube():
     query = request.args.get('q')
     list = getYtInfo(query)
     return jsonify(results = list)
+    
+@app.route("/location")
+def location():
+    query = request.args.get('q')
+    list = getLocInfo(query)
+    return jsonify(results = list)
 
 @app.route("/identify", methods=['POST'])
 def identify():
@@ -46,5 +53,5 @@ def identify():
     return analysis
 
 
-if __name__ == "__main__":
-    app.run(port=8080, debug=True)
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8080, debug=True)
