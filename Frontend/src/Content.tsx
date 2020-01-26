@@ -46,7 +46,7 @@ const Content = () => {
       renderItem={renderCard}
       sliderWidth={Dimensions.get('window').width}
       itemWidth={300}
-      style={{alignSelf: 'stretch', flexGrow: 0}}
+      style={{alignSelf: 'stretch', flexGrow: 0, height: 200}}
       activeSlideAlignment="center"
       loop
       onSnapToItem={(idx) => {
@@ -59,7 +59,7 @@ const Content = () => {
       renderItem={renderCard}
       sliderWidth={Dimensions.get('window').width}
       itemWidth={300}
-      style={{alignSelf: 'stretch', flexGrow: 0}}
+      style={{alignSelf: 'stretch', flexGrow: 0, height: 200}}
       activeSlideAlignment="center"
       loop
       onSnapToItem={(idx) => {
@@ -68,19 +68,18 @@ const Content = () => {
       firstItem={1} />
     <Text style={styles.videoTitle}>{ptFocusedTitle}</Text>
     <Text style={styles.heading}>Recycle It!</Text>
-    <Image source={{uri: 'https://i.ytimg.com/vi/hbLyPGfpSEY/0.jpg', width: 300, height: 200}} />
-    <Text style={styles.heading}>Delete this!</Text>
   </View>
 )};
 
 var styles = StyleSheet.create({
   heading: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 30,
+    fontWeight: 'bold',
   },
   videoTitle: {
     color: 'white',
-    fontSize: 40,
+    fontSize: 20,
   }
 });
 

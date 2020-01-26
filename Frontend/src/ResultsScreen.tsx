@@ -1,13 +1,20 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import Header from './Header';
 import Content from './Content';
 
 const ResultsScreen = () => (
-  <View style={{flexDirection: 'column', flex: 1, justifyContent: 'flex-start'}}>
-    <Header />
-    <Content />
+  <View style={{flex: 1, backgroundColor: '#3d6f67'}}>
+    <SafeAreaView style={{flexDirection: 'column', flex: 1, justifyContent: 'flex-start'}}>
+      <Header />
+      <Content />
+    </SafeAreaView>
   </View>
 );
+
+/*ResultsScreen.navigationOptions = {
+  title: 'EcoMode',
+  headerShown: true,
+};*/
 
 export default ResultsScreen;

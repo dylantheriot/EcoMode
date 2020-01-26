@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, StatusBar, Image, TouchableHighlight } from 'react-native';
+import { View, Text, StatusBar, Image, TouchableHighlight, Platform } from 'react-native';
+import Constants from 'expo-constants';
 
 const Header = () => (
   <View style={{
     backgroundColor: '#3d6f67',
-    height: 64 + StatusBar.currentHeight,
-    paddingTop: StatusBar.currentHeight,
+    height: 64 + (Platform.OS === 'android' ? Constants.statusBarHeight : 0),
+    paddingTop: Platform.OS === 'android' ? Constants.statusBarHeight : 0,
     flexDirection: 'row',
   }}>
     <TouchableHighlight style={{alignSelf: 'center'}}>
