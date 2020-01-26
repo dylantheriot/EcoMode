@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import jsonify
 # from pinterest import getPinterestInfo
-# from youtube import getYtInfo
+from youtube import getYtInfo
 # from location import getLocInfo
 from flask import request
 
@@ -17,11 +17,11 @@ def home():
 #     list = getPinterestInfo(query)
 #     return jsonify(results = list)
 
-# @app.route("/youtube")
-# def youtube():
-#     query = request.args.get('q')
-#     list = getYtInfo(query)
-#     return jsonify(results = list)
+@app.route("/youtube")
+def youtube():
+    query = request.args.get('q')
+    list = getYtInfo(query)
+    return jsonify(results = list)
     
 # @app.route("/location")
 # def location():
