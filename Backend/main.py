@@ -2,7 +2,7 @@ from flask import Flask
 from flask import jsonify
 from pinterest import getPinterestInfo
 from youtube import getYtInfo
-# from location import getLocInfo
+from location import getLocInfo
 from flask import request
 
 app = Flask(__name__)
@@ -23,11 +23,11 @@ def youtube():
     list = getYtInfo(query)
     return jsonify(results = list)
     
-# @app.route("/location")
-# def location():
-#     query = request.args.get('q')
-#     list = getLocInfo(query)
-#     return jsonify(results = list)
+@app.route("/location")
+def location():
+    query = request.args.get('q')
+    list = getLocInfo(query)
+    return jsonify(results = list)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
