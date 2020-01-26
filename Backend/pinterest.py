@@ -22,8 +22,18 @@ def getPinterestInfo(query):
         links.append(temp.a['href'])
         titles.append(temp.div.text)
         images.append(result.a['href'])
-    print(images)
-    print(titles)
-    print(links)
+    # print(images)
+    # print(titles)
+    # print(links)
+
+    json = []
+    for i in range(len(images)):
+        tempDict = {}
+        tempDict["title"] = titles[i]
+        tempDict["images"] = images[i]
+        tempDict['links'] = links[i]
+        json.append(tempDict)
+    return json
 
 getPinterestInfo('apple charger')
+
