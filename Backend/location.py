@@ -36,5 +36,3 @@ def getLocInfo(itemDetected):
     print(jsonOut)
 
     return jsonOut
-
-getLocInfo("can")
