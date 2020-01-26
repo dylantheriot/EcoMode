@@ -66,7 +66,7 @@ const HomeScreen = (props) => {
         });
         camera.current.pausePreview();
       }}>
-        <Image source={require('../assets/icon64.png')}/>
+        <Image source={require('../assets/icon2.png')}/>
       </TouchableOpacity>
     </Camera>
   </View>

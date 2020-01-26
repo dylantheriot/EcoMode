@@ -17,6 +17,11 @@ const renderCard = ({item, index}): JSX.Element => item.thumbnail ?
   </TouchableOpacity>)
   : 
   (null);
+const companyImgs = [require('../assets/Apple.png'), require('../assets/Crayola.png'), 
+  require('../assets/Nike.png'), require('../assets/Microsoft.png')];
+const renderImage = ({item, index}) => (
+  <Image source={companyImgs[index]} width={300} height={540} />
+);
 
 const Content = () => {
   const [ytCards, setYTCards] = useState<Card[]>([]);
@@ -70,6 +75,15 @@ const Content = () => {
     <Text style={styles.videoTitle}>{ptFocusedTitle}</Text>
     <Text style={styles.heading}>Recycle It!</Text>
     <GivingDirections />
+    <Text style={styles.heading}>Reduce It!</Text>
+    <Text style={{color: 'white', paddingBottom: 8}}>Check out these cool recycling campaigns!</Text>
+    <Carousel
+      data={new Array(4).fill(null)}
+      renderItem={renderImage}
+      sliderWidth={Dimensions.get('window').width}
+      itemWidth={300}
+      style={{alignSelf: 'stretch', flexGrow: 0, height: 540}}
+      activeSlideAlignment="center"/>
   </ScrollView>
 )};
 
@@ -78,6 +92,8 @@ var styles = StyleSheet.create({
     color: '#43c59d',
     fontSize: 30,
     fontWeight: 'bold',
+    paddingTop: 16,
+    paddingBottom: 4,
   },
   videoTitle: {
     color: 'white',
