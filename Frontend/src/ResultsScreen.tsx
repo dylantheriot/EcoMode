@@ -3,10 +3,10 @@ import { View, SafeAreaView } from 'react-native';
 import Header from './Header';
 import Content from './Content';
 
-const ResultsScreen = () => (
+const ResultsScreen = (props) => (
   <View style={{flex: 1, backgroundColor: '#3d6f67'}}>
     <SafeAreaView style={{flexDirection: 'column', flex: 1, justifyContent: 'flex-start'}}>
-      <Header />
+      <Header navigation={props.navigation} />
       <Content />
     </SafeAreaView>
   </View>

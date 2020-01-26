@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Image, Dimensions, TouchableOpacity, Linking, ScrollView } from 'react-native';
+import { Text, ImageBackground, StyleSheet, Image, Dimensions, TouchableOpacity, Linking, ScrollView } from 'react-native';
 import { useGlobal } from 'reactn';
 import Carousel from 'react-native-snap-carousel';
 import GivingDirections from './GivingDirections';
@@ -11,9 +11,13 @@ interface Card {
 }
 
 const API_ENDPOINT = 'http://eco-mode.appspot.com/'
-const renderCard = ({item, index}): JSX.Element => item.thumbnail ? 
+const ytLogo = require('../assets/youtube.png');
+const ptLogo = require('../assets/pinterest.png');
+const renderCard = ({item, index}, pt?: boolean): JSX.Element => item.thumbnail ? 
   (<TouchableOpacity onPress={() => Linking.openURL(item.link)}>
-    <Image source={{uri: item.thumbnail, height: 168, width: 300}} />
+    <ImageBackground source={{uri: item.thumbnail, height: 168, width: 300}}>
+      <Image source={pt ? ptLogo : ytLogo} width={50} />
+    </ImageBackground>
   </TouchableOpacity>)
   : 
   (null);
@@ -43,7 +47,7 @@ const Content = () => {
     fetch(API_ENDPOINT+`recycle?q=${tag}`).then(res => res.json()).then(res => {
       console.log(res.results[0].value);
       const recyclable = res.results[0].value === 'Recycle';
-      setDescription(`${tag} is${recyclable ? ' ': ' not '}recyclable!`);
+      setDescription(`${tag ? tag.charAt(0).toUpperCase() + tag.substring(1) : 'Bottle'} is${recyclable ? ' ': ' not '}recyclable!`);
     })
   }, []);
 
@@ -52,10 +56,15 @@ const Content = () => {
     backgroundColor: '#15453d',
     flexGrow: 1,
   }}>
+    <Text style={{
+      color: 'white', 
+      textAlign: 'center', 
+      fontSize: 16,
+      paddingTop: 8,}}>{description}</Text>
     <Text style={styles.heading}>Reuse It!</Text>
     <Carousel
       data={ytCards}
-      renderItem={renderCard}
+      renderItem={item =>renderCard(item, false)}
       sliderWidth={Dimensions.get('window').width}
       itemWidth={300}
       style={{alignSelf: 'stretch', flexGrow: 0, height: 200}}
@@ -65,10 +74,10 @@ const Content = () => {
         setYTTitle(ytCards[idx].title);
       }}
       firstItem={1} />
-    <Text style={styles.videoTitle}>{ytFocusedTitle}</Text>
+    <Text style={styles.videoTitle} numberOfLines={1}>{ytFocusedTitle}</Text>
     <Carousel
       data={ptCards}
-      renderItem={renderCard}
+      renderItem={item => renderCard(item, true)}
       sliderWidth={Dimensions.get('window').width}
       itemWidth={300}
       style={{alignSelf: 'stretch', flexGrow: 0, height: 200}}
@@ -78,10 +87,10 @@ const Content = () => {
         setPTTitle(ptCards[idx].title);
       }}
       firstItem={1} />
-    <Text style={styles.videoTitle}>{ptFocusedTitle}</Text>
+    <Text style={styles.videoTitle} numberOfLines={1}>{ptFocusedTitle}</Text>
     <Text style={styles.heading}>Recycle It!</Text>
     <GivingDirections />
-    <Text style={styles.heading}>Reduce It!</Text>
+    <Text style={styles.heading}>Relocate It!</Text>
     <Text style={{color: 'white', paddingBottom: 8}}>Check out these cool recycling campaigns!</Text>
     <Carousel
       data={new Array(4).fill(null)}
@@ -100,10 +109,12 @@ var styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingTop: 16,
     paddingBottom: 4,
+    fontFamily: 'Avenir',
   },
   videoTitle: {
     color: 'white',
     fontSize: 20,
+    paddingBottom: 4,
   }
 });
 

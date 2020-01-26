@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Dimensions, Text, View, TouchableOpacity, Image } from 'react-native';
 import { useGlobal } from 'reactn';
 import { Camera } from 'expo-camera'; 
+import * as Font from 'expo-font';
 
 const HomeScreen = (props) => {
   const [hasCamPerm, setHasCamPerm] = useState(false);
@@ -16,6 +17,15 @@ const HomeScreen = (props) => {
       setHasCamPerm(status === 'granted');
     })();
   }, []);
+  useEffect(() => {
+    Font.loadAsync({
+      'Avenir': require('../assets/Avenir.otf')
+    })
+  }, []);
+
+  useEffect(() => {
+    if (camera.current) camera.current.resumePreview();
+  }, [tag]);
 
   const {height, width} = Dimensions.get('window');
   const newWidth = 3/4*height;
@@ -56,6 +66,7 @@ const HomeScreen = (props) => {
             console.log(res);
             setTag(res.description.tags[0]);
             setImgURI(img.uri);
+            console.log(props);
             props.navigation.navigate('Objects');
           }).catch(err => {
             console.log(err);
