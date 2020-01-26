@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { TouchableOpacity, ImageBackground, processColor } from 'react-native';
+import { TouchableOpacity, ImageBackground } from 'react-native';
 import { useGlobal } from 'reactn';
 
 const ObjectsScreen = (props) => {

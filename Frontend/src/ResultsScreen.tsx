@@ -4,7 +4,7 @@ import Header from './Header';
 import Content from './Content';
 
 const ResultsScreen = () => (
-  <View style={{flexDirection: 'column'}}>
+  <View style={{flexDirection: 'column', flex: 1}}>
     <Header />
     <Content />
   </View>

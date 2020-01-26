@@ -47,7 +47,7 @@ const HomeScreen = (props) => {
       }}
       onPress={() => {
         console.log('Button has been pressed');
-        camera.current.takePictureAsync().then(img => {
+        camera.current.takePictureAsync({base64: true}).then(img => {
           fetch(API_ENDPOINT + 'identify', {
             method: 'POST',
             body: img.base64,
