@@ -1,10 +1,10 @@
-import React from 'react';
-import { TouchableOpacity, ImageBackground } from 'react-native';
+import React, { useEffect } from 'react';
+import { TouchableOpacity, ImageBackground, processColor } from 'react-native';
 import { useGlobal } from 'reactn';
-import { State } from 'reactn/default';
 
-const ObjectsScreen = () => {
+const ObjectsScreen = (props) => {
   const [imgURI, setImgURI] = useGlobal('imgURI');
+
   return (
     <ImageBackground source={{uri: imgURI}} style={{
         position: 'absolute',
@@ -22,7 +22,7 @@ const ObjectsScreen = () => {
         borderColor: 'blue',
         borderWidth: 5,
         borderStyle: 'solid',
-      }} />
+      }} onPress={() => props.navigation.navigate('Results')} />
     </ImageBackground>
   );
 }
