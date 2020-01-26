@@ -30,8 +30,8 @@ def getPinterestInfo(query):
     for i in range(len(images)):
         tempDict = {}
         tempDict["title"] = titles[i]
-        tempDict["images"] = images[i]
-        tempDict['links'] = links[i]
+        tempDict["thumbnail"] = images[i]
+        tempDict['link'] = links[i]
         json.append(tempDict)
     return json
 
