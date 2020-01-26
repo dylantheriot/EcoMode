@@ -13,7 +13,7 @@ const AppContainer = createAppContainer(
       Results: ResultsScreen,
     },
     {
-      initialRouteName: 'Results',
+      initialRouteName: 'Home',
       defaultNavigationOptions: {
         headerShown: false,
       }

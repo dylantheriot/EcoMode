@@ -29,6 +29,7 @@ const Content = () => {
   const [tag, setTag] = useGlobal('tag');
   const [ytFocusedTitle, setYTTitle] = useState('Loading...');
   const [ptFocusedTitle, setPTTitle] = useState('Loading...');
+  const [description, setDescription] = useState('Checking recyclability...');
   useEffect(() => {
     fetch(API_ENDPOINT+`youtube?q=${tag}`).then(res => res.json()).then(res => {
       setYTCards(res.results);
@@ -39,6 +40,11 @@ const Content = () => {
       setPTCards(res.results);
       setPTTitle(res.results[1].title);
     });
+    fetch(API_ENDPOINT+`recycle?q=${tag}`).then(res => res.json()).then(res => {
+      console.log(res.results[0].value);
+      const recyclable = res.results[0].value === 'Recycle';
+      setDescription(`${tag} is${recyclable ? ' ': ' not '}recyclable!`);
+    })
   }, []);
 
   return (
