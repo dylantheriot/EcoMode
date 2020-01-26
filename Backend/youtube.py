@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup as soup
 import requests
 import json
 
@@ -9,9 +9,9 @@ def getYtInfo(itemDetected):
     response = requests.get(URL)
     page = response.text
 
-    soup = bs(page, 'html.parser')
+    soup1 = soup(page, 'html.parser')
 
-    videos = soup.findAll('a', class_ = "yt-uix-tile-link")
+    videos = soup1.findAll('a', class_ = "yt-uix-tile-link")
 
     titles = []
     links = []
@@ -20,7 +20,6 @@ def getYtInfo(itemDetected):
     for v in videos:
         href = v.get("href")
         thumb = href[9:]
-        # title = v.get("title")
         titles.append(v.get("title"))
         links.append("https://www.youtube.com" + href)
         thumbnails.append("https://i.ytimg.com/vi/"+ thumb + "/0.jpg")

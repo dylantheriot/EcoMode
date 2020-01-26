@@ -1,7 +1,5 @@
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup as soup
 import requests
-import json
-import os
 
 def getLocInfo(itemDetected):
 
@@ -10,8 +8,8 @@ def getLocInfo(itemDetected):
     response = requests.get(URL)
     page = response.text
 
-    soup = bs(page, 'html.parser')
-    locations = soup.findAll('li', class_ = "result-item")
+    soup1 = soup(page, 'html.parser')
+    locations = soup1.findAll('li', class_ = "result-item")
 
     titles = []
     address = []
@@ -32,7 +30,5 @@ def getLocInfo(itemDetected):
         temp['title'] = titles[i]
         temp['address'] = address[i]
         jsonOut.append(temp)
-
-    print(jsonOut)
 
     return jsonOut
