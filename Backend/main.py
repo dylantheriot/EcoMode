@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup as bs
 # from location import getLocInfo
 from flask import request
 import requests
-import json
 
 def getYtInfo(itemDetected):
 
