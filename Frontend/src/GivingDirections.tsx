@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Dimensions, StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
@@ -15,7 +14,10 @@ class GivingDirections extends Component {
     render() {
         return (
             <MapView
-            style={StyleSheet.absoluteFillObject}
+            style={{
+                width: 500,
+                height: 500,
+            }}
             initialRegion={{
               latitude: 37.78825,
               longitude: -122.4324,

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, Image, Dimensions, TouchableOpacity, Linking } from 'react-native';
 import { useGlobal } from 'reactn';
 import Carousel from 'react-native-snap-carousel';
+import GivingDirections from './GivingDirections';
 
 interface Card {
   link: string;
@@ -68,6 +69,7 @@ const Content = () => {
       firstItem={1} />
     <Text style={styles.videoTitle}>{ptFocusedTitle}</Text>
     <Text style={styles.heading}>Recycle It!</Text>
+    <GivingDirections />
   </View>
 )};
 
