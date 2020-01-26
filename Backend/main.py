@@ -11,6 +11,27 @@ import base64
 
 app = Flask(__name__)
 
+recycle = {
+    'newspaper': 1, 
+    'magazines' : 1, 
+    'cans' : 1, 
+    'can' : 1, 
+    'magazine' : 1, 
+    'paper' : 1, 
+    'plastic' : 1, 
+    'book' : 1, 
+    'box' : 1, 
+    'boxes' : 1, 
+    'bottle' : 1,
+    'aluminum' : 1, 
+    'bottles' : 1, 
+    'mail' : 1, 
+    'bags' : 1,
+    'straws' : 1, 
+    'bag' : 1, 
+    'straw' : 1, 
+}
+
 @app.route("/")
 def home():
     return('Howdy and welcome to the API for Eco-Mode! Please enjoy your stay.')
@@ -52,6 +73,17 @@ def identify():
     analysis = response.json()
     return analysis
 
+@app.route("/recycle") 
+def recycle1(): 
+    query = request.args.get('q') 
+    list = [] 
+    tempDict = {} 
+    if query in recycle.keys(): 
+        tempDict['value'] = 'Recycle' 
+    else: 
+        tempDict['value'] = 'Trash' 
+    list.append(tempDict) 
+    return jsonify(results = list)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
