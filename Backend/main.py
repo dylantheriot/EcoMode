@@ -1,9 +1,9 @@
 from flask import Flask
-# from flask import jsonify
-# from pinterest import getPinterestInfo
-# from youtube import getYtInfo
-# from location import getLocInfo
-# from flask import request
+from flask import jsonify
+from pinterest import getPinterestInfo
+from youtube import getYtInfo
+from location import getLocInfo
+from flask import request
 
 app = Flask(__name__)
 
