@@ -23,6 +23,8 @@ const HomeScreen = (props) => {
   if (!hasCamPerm)
     return (<View><Text>EcoMode needs the camera to work :(</Text></View>);
 
+  const API_ENDPOINT = 'http://eco-mode.appspot.com/'
+
   return (
   <View style={{flex: 1}}>
     <Camera type={camType} ref={camera} style={{
@@ -46,8 +48,18 @@ const HomeScreen = (props) => {
       onPress={() => {
         console.log('Button has been pressed');
         camera.current.takePictureAsync().then(img => {
-          setImgURI(img.uri);
-          props.navigation.navigate('Objects');
+          fetch(API_ENDPOINT + 'identify', {
+            method: 'POST',
+            body: img.base64,
+          }).then(res => res.json()).then(res => {
+            console.log(res);
+            setImgURI(img.uri);
+            props.navigation.navigate('Objects');
+          }).catch(err => {
+            console.log('ARRGGG', err);
+            setImgURI(img.uri);
+            props.navigation.navigate('Objects');
+          });
         });
       }}>
         <Image source={require('../assets/icon64.png')}/>

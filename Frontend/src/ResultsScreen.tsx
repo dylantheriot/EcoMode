@@ -1,8 +1,13 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import Header from './Header';
+import Content from './Content';
 
 const ResultsScreen = () => (
-  <Text style={{flex: 1}}>Placeholder for results</Text>
+  <View style={{flexDirection: 'column'}}>
+    <Header />
+    <Content />
+  </View>
 );
 
 export default ResultsScreen;
