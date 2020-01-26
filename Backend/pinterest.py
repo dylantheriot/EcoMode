@@ -35,5 +35,4 @@ def getPinterestInfo(query):
         json.append(tempDict)
     return json
 
-getPinterestInfo('apple charger')
 
