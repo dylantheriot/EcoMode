@@ -18,11 +18,11 @@ def home():
 #     list = getPinterestInfo(query)
 #     return jsonify(results = list)
 
-@app.route("/youtube")
-def youtube():
-    query = request.args.get('q')
-    list = getYtInfo(query)
-    return jsonify(results = list)
+# @app.route("/youtube")
+# def youtube():
+#     query = request.args.get('q')
+#     list = getYtInfo(query)
+#     return jsonify(results = list)
     
 # @app.route("/location")
 # def location():
