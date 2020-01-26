@@ -8,6 +8,7 @@ const HomeScreen = (props) => {
   const [camType, setCamType] = useState(Camera.Constants.Type.back);
   const camera = useRef<Camera>(null);
   const [imgURI, setImgURI] = useGlobal('imgURI');
+  const [tag, setTag] = useGlobal('tag');
 
   useEffect(() => {
     (async() => {
@@ -53,14 +54,17 @@ const HomeScreen = (props) => {
             body: img.base64,
           }).then(res => res.json()).then(res => {
             console.log(res);
+            setTag(res.description.tags[0]);
             setImgURI(img.uri);
             props.navigation.navigate('Objects');
           }).catch(err => {
-            console.log('ARRGGG', err);
+            console.log(err);
+            setTag('bottle');
             setImgURI(img.uri);
             props.navigation.navigate('Objects');
           });
         });
+        camera.current.pausePreview();
       }}>
         <Image source={require('../assets/icon64.png')}/>
       </TouchableOpacity>
