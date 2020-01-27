@@ -4,7 +4,7 @@ import { useGlobal } from 'reactn';
 
 const ObjectsScreen = (props) => {
   const [imgURI, setImgURI] = useGlobal('imgURI');
-  const boxes = [{left: 100, top: 50, width: 200, height: 100, text: 'Can'}];
+  const boxes = [{left: 100, top: 150, width: 200, height: 150, text: 'Can'}];
 
   const renderBox = ({left, top, width, height, text}) => (
     <TouchableOpacity style={{

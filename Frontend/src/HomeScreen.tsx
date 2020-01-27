@@ -59,12 +59,22 @@ const HomeScreen = (props) => {
       onPress={() => {
         console.log('Button has been pressed');
         camera.current.takePictureAsync({base64: true}).then(img => {
+          console.log('Picture taken');
           fetch(API_ENDPOINT + 'identify', {
             method: 'POST',
             body: img.base64,
           }).then(res => res.json()).then(res => {
             console.log(res);
-            setTag(res.description.tags[0]);
+            /*if (res.description.tags[0] === 'indoor' || res.description.tags[0] === 'sitting')
+              setTag(res.description.tags[1]);
+            else
+              setTag(res.description.tags[0]);*/
+            const bad = ['indoor', 'sitting', 'table'];
+            let i = 0;
+            while(bad.find(x => x === res.description.tags[i]))
+              i++;
+            console.log(res.description.tags[i]);
+            setTag(res.description.tags[i]);
             setImgURI(img.uri);
             console.log(props);
             props.navigation.navigate('Objects');

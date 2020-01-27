@@ -15,9 +15,7 @@ const ytLogo = require('../assets/youtube.png');
 const ptLogo = require('../assets/pinterest.png');
 const renderCard = ({item, index}, pt?: boolean): JSX.Element => item.thumbnail ? 
   (<TouchableOpacity onPress={() => Linking.openURL(item.link)}>
-    <ImageBackground source={{uri: item.thumbnail, height: 168, width: 300}}>
-      <Image source={pt ? ptLogo : ytLogo} width={50} />
-    </ImageBackground>
+    <Image source={{uri: item.thumbnail, height: 168, width: 300}} />
   </TouchableOpacity>)
   : 
   (null);
