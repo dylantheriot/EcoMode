@@ -1,2 +1,2 @@
 # EcoMode
-Winning hackathon project at TAMUhack 2020
+Check out the devpost at ![devpost_link](https://devpost.com/software/eco-mode-9rmfk5)
