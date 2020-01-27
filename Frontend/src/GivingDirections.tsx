@@ -8,7 +8,7 @@ import MapViewDirections from 'react-native-maps-directions';
 const start = {latitude: 30.618359, longitude: -96.337089};
 const destination = {latitude: 37.771707, longitude: -122.4053769};
 
-const GOOGLE_MAPS_APIKEY = 'AIzaSyAL9AbiDlJD4KEuZzUm34Lj8Qn08sRJPvA'
+const GOOGLE_MAPS_APIKEY = ''
 
 
 class GivingDirections extends Component {
